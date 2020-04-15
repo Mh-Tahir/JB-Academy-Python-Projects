@@ -1,0 +1,24 @@
+# if not sorted
+def search(elements, target):
+    index = -1
+ 
+    for i, elem in enumerate(elements):
+        if elem == target:
+            index = i
+            break
+ 
+    return index
+
+# if sorted
+def search(elements, target):
+    index = -1
+ 
+    for i, elem in enumerate(elements):
+        if elem == target:
+            index = i
+            break
+ 
+        if elem > target:
+            break
+ 
+    return index
