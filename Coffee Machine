@@ -1,6 +1,21 @@
+# It requests the amounts of water, milk, and coffee beans available at the moment, and then asks for the number of cups a user needs.
+import math
+print('Write how many ml of water the coffee machine has:')
+water = int(input())
+print('Write how many ml of milk the coffee machine has:')
+milk = int(input())
+print('Write how many grams of coffee beans the coffee machine has:')
+beans = int(input())
 print('Write how many cups of coffee you will need:')
-cups = int(input())
-water = cups * 200
-milk = cups * 50
-beans = cups * 15
-print(f'For {cups} cups of coffee you will need:\n{water} ml of water\n{milk} ml of milk\n{beans} g of coffee beans')
+cups_need = int(input())
+cups_water = water / 200
+cups_milk = milk / 50 
+cups_beans = beans / 15
+extra = math.floor(min(cups_water - cups_need, cups_milk - cups_need, cups_beans - cups_need))
+cups = math.floor(min(cups_water, cups_milk, cups_beans))
+if cups == cups_need:
+    print('Yes, I can make that amount of coffee')
+elif cups > cups_need:
+    print(f'Yes, I can make that amount of coffee (and even {extra} more than that)')
+else:
+    print(f'No, I can make only {cups} cups of coffee')
