@@ -87,22 +87,35 @@ state()
 
 # loops for query from the user (buy, fill, take, remaining) or exit.
 import sys
+import math
 
 w = 400
 mi = 540
 b = 120
 d = 9
 mo = 550
+w1 = 250
+mi1 = 0
+b1 = 16
+mo1 = 4
+w2 = 350
+mi2 = 75
+b2 = 20
+mo2 = 7
+w3 = 200
+mi3 = 100
+b3 = 12
+mo3 = 6
 
 def choose():
     while True:
         print('Write action (buy, fill, take, remaining, exit):')
-        choice = input() 
+        choice = input()
         if choice == 'buy':
             return buy()
         if choice == 'fill':
             return fill()
-        if choice == 'take':    
+        if choice == 'take':
             return take()
         if choice == 'remaining':
             return remaining()
@@ -110,55 +123,70 @@ def choose():
             sys.exit()
 
 def remaining():
-    print()
-    print('The coffee machine has:')
+    print('\nThe coffee machine has:')
     print(w, 'of water')
     print(mi, 'of milk')
     print(b, 'of coffee beans')
     print(d, 'of disposable cups')
-    print(f'${mo} of money')
-    print()
+    print(f'${mo} of money\n')
     return
 
 def buy():
     global w, mi, b, d, mo
-    print()
-    print('What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:')
-    if int(input()) == 1:
-        w -= 250
-        b -= 16
-        mo += 4
-        d -= 1
-    elif int(input()) == 2:
-        w -= 350
-        mi -= 75
-        b -= 20
-        mo += 7
-        d -= 1
-    elif int(input()) == 3:
-        w -= 200
-        mi -= 100
-        b -= 12
-        mo += 6
-        d -= 1
-    elif input() == 'back':
-        return buy()
-    if w * mi * b * d != 0:
-        print('I have enough resources, making you a coffee!')
-    elif w == 0:
-        print('Sorry, not enough water!')
-    elif mi == 0:
-        print('Sorry, not enough milk!')
-    elif b == 0:
-        print('Sorry, not enough coffee beans!')
-    elif d == 0:
-        print('Sorry, not enough disposable cups!')
-    return
+    print('\nWhat do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:')
+    x = input()
+    if x == 'back':
+        return choose()
+    elif int(x) == 1:
+        if enough(w1, mi1, b1) == True:
+            w -= w1
+            b -= b1
+            mo += mo1
+            d -= 1
+        return tell()
+    elif int(x) == 2:
+        if enough(w2, mi2, b2) == True:
+            w -= w2
+            mi -= mi2
+            b -= b2
+            mo += mo2
+            d -= 1
+        return tell()
+    elif int(x) == 3:
+        if enough(w3, mi3, b3) == True:
+            w -= w3
+            mi -= mi3
+            b -= b3
+            mo += mo3
+            d -= 1
+        return tell()
+
+def enough(a1, a2, a3):
+    global w, mi, b, d
+    c = math.floor(min(w / a1, mi / a2, b / a3, d))
+    return True if c > 0 else False
+
+def tell():
+    global w, mi, b, d
+    if w <= 0:
+        print('Sorry, not enough water!\n')
+        return False
+    elif mi <= 0:
+        print('Sorry, not enough milk!\n')
+        return False
+    elif b <= 0:
+        print('Sorry, not enough coffee beans!\n')
+        return False
+    elif d <= 0:
+        print('Sorry, not enough disposable cups!\n')
+        return False
+    else:
+        print('I have enough resources, making you a coffee!\n')
+        return True
 
 def fill():
     global w, mi, b, d
-    print()
-    print('Write how many ml of water do you want to add:')
+    print('\nWrite how many ml of water do you want to add:')
     w += int(input())
     print('Write how many ml of milk do you want to add:')
     mi += int(input())
@@ -166,17 +194,19 @@ def fill():
     b += int(input())
     print('Write how many disposable cups of coffee do you want to add:')
     d += int(input())
-    print()
     return
 
 def take():
     global mo
-    print(f'I gave you ${mo}')
-    print()
+    print(f'I gave you ${mo}\n')
     mo = 0
     return
 
 def main():
+    while True:
+        choose()
+
+main()
     choose()
 
 main()
