@@ -26,9 +26,6 @@ mi = 540
 b = 120
 d = 9
 mo = 550
-c_w = w / 200
-c_mi = mi / 50 
-c_b = b / 15
 
 def choose():
     print('Write action (buy, fill, take):')
