@@ -84,3 +84,99 @@ def take():
 state()
 choose()
 state()
+
+# loops for query from the user (buy, fill, take, remaining) or exit.
+import sys
+
+w = 400
+mi = 540
+b = 120
+d = 9
+mo = 550
+
+def choose():
+    while True:
+        print('Write action (buy, fill, take, remaining, exit):')
+        choice = input() 
+        if choice == 'buy':
+            return buy()
+        if choice == 'fill':
+            return fill()
+        if choice == 'take':    
+            return take()
+        if choice == 'remaining':
+            return remaining()
+        if choice == 'exit':
+            sys.exit()
+
+def remaining():
+    print()
+    print('The coffee machine has:')
+    print(w, 'of water')
+    print(mi, 'of milk')
+    print(b, 'of coffee beans')
+    print(d, 'of disposable cups')
+    print(f'${mo} of money')
+    print()
+    return
+
+def buy():
+    global w, mi, b, d, mo
+    print()
+    print('What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:')
+    if int(input()) == 1:
+        w -= 250
+        b -= 16
+        mo += 4
+        d -= 1
+    elif int(input()) == 2:
+        w -= 350
+        mi -= 75
+        b -= 20
+        mo += 7
+        d -= 1
+    elif int(input()) == 3:
+        w -= 200
+        mi -= 100
+        b -= 12
+        mo += 6
+        d -= 1
+    elif input() == 'back':
+        return buy()
+    if all(w, mi, b, d) != 0:
+        print('I have enough resources, making you a coffee!')
+    elif w == 0:
+        print('Sorry, not enough water!')
+    elif mi == 0:
+        print('Sorry, not enough milk!')
+    elif b == 0:
+        print('Sorry, not enough coffee beans!')
+    elif d == 0:
+        print('Sorry, not enough disposable cups!')
+    return
+
+def fill():
+    global w, mi, b, d
+    print()
+    print('Write how many ml of water do you want to add:')
+    w += int(input())
+    print('Write how many ml of milk do you want to add:')
+    mi += int(input())
+    print('Write how many grams of coffee beans do you want to add:')
+    b += int(input())
+    print('Write how many disposable cups of coffee do you want to add:')
+    d += int(input())
+    print()
+    return
+
+def take():
+    global mo
+    print(f'I gave you ${mo}')
+    print()
+    mo = 0
+    return
+
+def main():
+    choose()
+
+main()
