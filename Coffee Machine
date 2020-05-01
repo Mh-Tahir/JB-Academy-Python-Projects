@@ -87,7 +87,6 @@ state()
 
 # loops for query from the user (buy, fill, take, remaining) or exit.
 import sys
-import math
 
 w = 400
 mi = 540
@@ -163,7 +162,6 @@ def buy():
 
 def enough(a1, a2, a3):
     global w, mi, b, d
-    #c = math.floor(min(w / a1, mi / a2, b / a3, d))
     if w / a1 < 1:
         print('Sorry, not enough water!\n')
         return False
