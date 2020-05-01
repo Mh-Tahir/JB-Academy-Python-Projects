@@ -143,7 +143,7 @@ def buy():
             b -= b1
             mo += mo1
             d -= 1
-        return tell()
+        return enough(w1, mi1, b1)
     elif int(x) == 2:
         if enough(w2, mi2, b2) == True:
             w -= w2
@@ -151,7 +151,7 @@ def buy():
             b -= b2
             mo += mo2
             d -= 1
-        return tell()
+        return enough(w2, mi2, b2)
     elif int(x) == 3:
         if enough(w3, mi3, b3) == True:
             w -= w3
@@ -159,30 +159,26 @@ def buy():
             b -= b3
             mo += mo3
             d -= 1
-        return tell()
+        return enough(w3, mi3, b3)
 
 def enough(a1, a2, a3):
     global w, mi, b, d
-    c = math.floor(min(w / a1, mi / a2, b / a3, d))
-    return True if c > 0 else False
-
-def tell():
-    global w, mi, b, d
-    if w <= 0:
+    #c = math.floor(min(w / a1, mi / a2, b / a3, d))
+    if w / a1 < 1:
         print('Sorry, not enough water!\n')
         return False
-    elif mi <= 0:
-        print('Sorry, not enough milk!\n')
-        return False
-    elif b <= 0:
+    if a2 != 0:
+        if mi / a2 < 1:
+            print('Sorry, not enough milk!\n')
+            return False
+    if b / a3 < 1:
         print('Sorry, not enough coffee beans!\n')
         return False
-    elif d <= 0:
+    if d < 1:
         print('Sorry, not enough disposable cups!\n')
         return False
-    else:
-        print('I have enough resources, making you a coffee!\n')
-        return True
+    print('I have enough resources, making you a coffee!\n')
+    return True
 
 def fill():
     global w, mi, b, d
@@ -205,8 +201,5 @@ def take():
 def main():
     while True:
         choose()
-
-main()
-    choose()
 
 main()
