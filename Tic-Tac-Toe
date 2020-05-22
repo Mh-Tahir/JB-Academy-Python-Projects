@@ -1,0 +1,11 @@
+cells = input('Enter cells: ')
+print('---------')
+for i in range(len(cells)):
+    if i == 0:
+      print('| ', end='')
+    if i in (3, 6):
+        print('|')
+        print('| ', end='')
+    print(cells[i] + ' ', end='')
+print('|')
+print('---------')
