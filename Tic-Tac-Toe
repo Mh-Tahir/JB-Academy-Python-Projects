@@ -1,11 +1,38 @@
-cells = input('Enter cells: ')
-print('---------')
-for i in range(len(cells)):
-    if i == 0:
-      print('| ', end='')
-    if i in (3, 6):
-        print('|')
+cells = list(input('Enter cells: '))
+def out():
+  print('---------')
+  for i in range(len(cells)):
+      if i == 0:
         print('| ', end='')
-    print(cells[i] + ' ', end='')
-print('|')
-print('---------')
+      if i in (3, 6):
+          print('|')
+          print('| ', end='')
+      print(cells[i] + ' ', end='')
+  print('|')
+  print('---------')
+
+def check():
+  x, o = False, False
+  for i in (0, 3, 6):
+    if cells[i] == cells[i + 1] == cells[i + 2] == 'X' or cells[0] == cells[4] == cells[8] == 'X' or cells[2] == cells[4] == cells[6] == 'X':
+      x = True
+    if cells[i] == cells[i + 1] == cells[i + 2] == 'O' or cells[0] == cells[4] == cells[8] == 'O' or cells[2] == cells[4] == cells[6] == 'O':
+      o = True
+  for i in (0, 1, 2):
+    if cells[i] == cells[i + 3] == cells[i + 6] == 'X':
+      x = True
+    if cells[i] == cells[i + 3] == cells[i + 6] == 'O':
+      o = True
+  if x == o == True or abs(cells.count("X") - cells.count("O")) > 1:
+    print('Impossible')
+  elif x == True:
+    print('X wins')
+  elif o == True:
+    print('O wins')
+  elif x == o == False and "_" not in cells:
+    print('Draw')
+  elif x == o == False and "_" in cells:
+    print('Game not finished')
+
+out()    
+check()
