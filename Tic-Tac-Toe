@@ -1,3 +1,5 @@
+import re
+
 cells = list(input('Enter cells: '))
 def out():
   print('---------')
@@ -34,5 +36,32 @@ def check():
   elif x == o == False and "_" in cells:
     print('Game not finished')
 
+d = {
+  '1 1': 6,
+  '1 2': 3,
+  '1 3': 0,
+  '2 1': 7,
+  '2 2': 4,
+  '2 3': 1,
+  '3 1': 8,
+  '3 2': 5,
+  '3 3': 2
+}
+
+def coordinatate():
+  while True:
+    c = input('Enter the coordinates: ')
+    if re.match('[1-3] [1-3]', c) is not None:
+      if cells[d[c]] == '_':
+        cells[d[c]] = 'X'
+        break
+      else:
+        print('This cell is occupied! Choose another one!')
+    elif re.match('[0-9] [0-9]', c) is not None:
+      print('Coordinates should be from 1 to 3!')
+    else:
+      print('You should enter numbers!')
+
 out()    
-check()
+coordinatate()
+out()
