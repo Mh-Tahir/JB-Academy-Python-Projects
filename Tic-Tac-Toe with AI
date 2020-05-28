@@ -1,4 +1,6 @@
 import re
+import random
+
 d = {
   '1 1': 6,
   '1 2': 3,
@@ -10,9 +12,9 @@ d = {
   '3 2': 5,
   '3 3': 2
 }
+blank = list(range(9))
 turn = 1
-
-cells = list(input('Enter cells: '))
+cells = list('_________')
 
 def out():
   print('---------')
@@ -40,19 +42,23 @@ def check():
       o = True
   if x == o == True or abs(cells.count("X") - cells.count("O")) > 1:
     out()
-    return('Impossible')
+    print('Impossible')
+    return 0
   elif x == True:
     out()
-    return('X wins')
+    print('X wins')
+    return 1
   elif o == True:
     out()
-    return('O wins')
+    print('O wins')
+    return 1
   elif x == o == False and "_" not in cells:
     out()
-    return('Draw')
+    print('Draw')
+    return 1
   else:
     out()
-    return('Game not finished')
+    return 0
 
 def coordinate():
   global turn
@@ -63,6 +69,7 @@ def coordinate():
         if cells[d[c]] == '_':
           cells[d[c]] = "O" if cells.count("X") > cells.count("O") else "X"
           turn += 1
+          blank.remove(d[c])
           break
         else:
           print('This cell is occupied! Choose another one!')
@@ -73,13 +80,20 @@ def coordinate():
     except:
       print('Wrong coordinates!')
 
+def move():
+  print('Making move level "easy"')
+  r = random.choice(blank)
+  cells[r] = 'O'
+  blank.remove(r)
+
 def play():
   out()
   while True:
     coordinate()
     if check() == 1:
       break
+    move()
+    if check() == 1:
+      break
 
-out()
-coordinate()
-print(check())
+play()
