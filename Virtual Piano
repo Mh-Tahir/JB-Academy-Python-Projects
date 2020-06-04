@@ -5,12 +5,32 @@
     <title>Virtual Piano</title>
 </head>
 <body>
-<kbd>A</kbd>
-<kbd>S</kbd>
-<kbd>D</kbd>
-<kbd>F</kbd>
-<kbd>G</kbd>
-<kbd>H</kbd>
-<kbd>J</kbd>
+<div class="container">
+    <kbd>A</kbd>
+    <kbd>S</kbd>
+    <kbd>D</kbd>
+    <kbd>F</kbd>
+    <kbd>G</kbd>
+    <kbd>H</kbd>
+    <kbd>J</kbd>
+</div>
+<style>
+    body {
+      background-color: coral;
+      margin: 200px 450px;
+    }
+    .container {
+        margin: auto;
+    }
+    kbd {
+      display: inline-block;
+      border: 3px solid grey;
+      font-size: 2em;
+      margin-left: -5px;
+      text-align: center;
+      background-color: white;
+      padding: 100px 10px;
+    }
+</style>
 </body>
 </html>
