@@ -16,21 +16,54 @@
 </div>
 <style>
     body {
-      background-color: coral;
-      margin: 200px 450px;
+        background-color: coral;
+        margin: 200px 450px;
     }
     .container {
+    //background-color: white;
         margin: auto;
+    //padding: 100px 10px;
+    //display: inline-block;
+    //border: 3px solid grey;
     }
     kbd {
-      display: inline-block;
-      border: 3px solid grey;
-      font-size: 2em;
-      margin-left: -5px;
-      text-align: center;
-      background-color: white;
-      padding: 100px 10px;
+        display: inline-block;
+    //width: 20px;
+    //height: 10px;
+        border: 3px solid grey;
+        font-size: 2em;
+        margin-left: -5px;
+        text-align: center;
+        background-color: white;
+        padding: 100px 10px;
     }
 </style>
+<script>
+    document.addEventListener("keydown", function(event) {
+        if (event.code == "KeyA") {
+            console.log("The 'A' key is pressed.");
+        }
+        else if (event.code == "KeyS") {
+            console.log("The 'S' key is pressed.");
+        }
+        else if (event.code == "KeyD") {
+            console.log("The 'D' key is pressed.");
+        }
+        else if (event.code == "KeyF") {
+            console.log("The 'F' key is pressed.");
+        }
+        else if (event.code == "KeyG") {
+            console.log("The 'G' key is pressed.");
+        }
+        else if (event.code == "KeyH") {
+            console.log("The 'H' key is pressed.");
+        }
+        else if (event.code == "KeyJ") {
+            console.log("The 'J' key is pressed.");
+        } else {
+            console.log("Warning! Wrong key is pressed.");
+        }
+    });
+</script>
 </body>
 </html>
