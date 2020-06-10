@@ -19,17 +19,19 @@
         background-color: coral;
         margin: 200px 450px;
     }
+
     .container {
-    //background-color: white;
+    / / background-color: white;
         margin: auto;
-    //padding: 100px 10px;
-    //display: inline-block;
-    //border: 3px solid grey;
+    / / padding: 100 px 10 px;
+    / / display: inline-block;
+    / / border: 3 px solid grey;
     }
+
     kbd {
         display: inline-block;
-    //width: 20px;
-    //height: 10px;
+    / / width: 20 px;
+    / / height: 10 px;
         border: 3px solid grey;
         font-size: 2em;
         margin-left: -5px;
@@ -39,27 +41,35 @@
     }
 </style>
 <script>
-    document.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", function (event) {
         if (event.code == "KeyA") {
             console.log("The 'A' key is pressed.");
-        }
-        else if (event.code == "KeyS") {
+            let a = new Audio("white_keys/A.mp3");
+            a.play();
+        } else if (event.code == "KeyS") {
             console.log("The 'S' key is pressed.");
-        }
-        else if (event.code == "KeyD") {
+            let s = new Audio("white_keys/S.mp3");
+            s.play();
+        } else if (event.code == "KeyD") {
             console.log("The 'D' key is pressed.");
-        }
-        else if (event.code == "KeyF") {
+            let d = new Audio("white_keys/D.mp3");
+            d.play();
+        } else if (event.code == "KeyF") {
             console.log("The 'F' key is pressed.");
-        }
-        else if (event.code == "KeyG") {
+            let f = new Audio("white_keys/F.mp3");
+            f.play();
+        } else if (event.code == "KeyG") {
             console.log("The 'G' key is pressed.");
-        }
-        else if (event.code == "KeyH") {
+            let g = new Audio("white_keys/G.mp3");
+            g.play();
+        } else if (event.code == "KeyH") {
             console.log("The 'H' key is pressed.");
-        }
-        else if (event.code == "KeyJ") {
+            let h = new Audio("white_keys/H.mp3");
+            h.play();
+        } else if (event.code == "KeyJ") {
             console.log("The 'J' key is pressed.");
+            let j = new Audio("white_keys/J.mp3");
+            j.play();
         } else {
             console.log("Warning! Wrong key is pressed.");
         }
