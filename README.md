@@ -1,2 +1,2 @@
-# JetBrains-Academy
+# JetBrains Academy Python
 Python Projects
